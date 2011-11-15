@@ -1,4 +1,18 @@
 GaraloTk::Application.routes.draw do
+  resources :categories
+
+  #resources :comments
+
+  #resources :blog_entries
+  
+  resources :blog_entries do
+    resources :comments
+  end
+
+  devise_for :users
+
+  root :to => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
