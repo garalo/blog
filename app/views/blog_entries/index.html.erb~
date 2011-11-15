@@ -40,7 +40,7 @@
         <div class="actions">
         </div>
         
-        <%= will_paginate @blog_entries  %>
+        <%= paginate @blog_entries  %>
         
       </div>
     </div>

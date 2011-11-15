@@ -34,7 +34,11 @@
      </p>
 
      <h2>Category</h2>
-     <%= @category.name %>
+      <% if @category %>
+     <%= @category.name   %>
+     <% else %>
+     <p> No Category</p>
+      <% end %>
 
      <h2>Comments</h2>
      <%= render @blog_entry.comments %>

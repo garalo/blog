@@ -3,7 +3,7 @@ class BlogEntriesController < ApplicationController
   # GET /blog_entries.json
   def index
     @blog_entries = BlogEntry.page(params[:page])
-
+    @categories = Category.all # for side menuS
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @blog_entries }
@@ -16,6 +16,7 @@ class BlogEntriesController < ApplicationController
     @blog_entry = BlogEntry.find(params[:id])
     @comment = Comment.new
     @category = Category.find_by_id(@blog_entry.category_id)
+    @categories = Category.all # for side menu 
 
     respond_to do |format|
       format.html # show.html.erb
