@@ -1,0 +1,5 @@
+module BlogEntriesHelper
+  def join_tags(post_entry)
+    post_entry.tags.map { |t| t.name }.join(", ")
+  end
+end
