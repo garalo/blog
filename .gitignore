@@ -3,4 +3,6 @@ db/*.sqlite3
 log/*.log
 tmp/
 .sass-cache/
-garalo.tk/
+garalo.tk/*
+access_log
+error_log
