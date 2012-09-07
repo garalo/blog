@@ -1,17 +1,17 @@
-GaraloTk::Application.routes.draw do
-  resources :categories
+Blog::Application.routes.draw do
 
-  #resources :comments
-
-  #resources :blog_entries
-  
-  resources :blog_entries do
-    resources :comments
-  end
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
 
-  root :to => 'home#index'
+ # ActiveAdmin.routes(self)
+  
+  resources :posts do
+    resources :comments
+    resources :categories
+  end
+
+  #get "home/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -62,7 +62,7 @@ GaraloTk::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,26 @@
+layouts
+<% if @tags.nil? %>
+   default_tag
+  <% else%>
+<div class="nav nav-list">
+<h4 class="nav-header">Tags</h4>
+  <% @tags.each do |tag| %>
+    <%= link_to tag.name, :tag => tag.name %>-(<%= tag.count %>) 
+  <% end %>
+</div>
+<% end %>
+
+<% if !@posts_by_month.nil? %>
+<% @posts_by_month.each do |monthname, posts| %>
+<p class="month-archive"><%= monthname %></p>
+     <div class="archive">
+    <ul class="archive">
+    <% posts.each do |post| %>
+    <li class="archive"><p class="archive-post"><%= link_to "#{post.title}", post %></p></li>
+    <% end %>
+    </ul>
+</div>
+<% end %>
+<% end %>
+
+

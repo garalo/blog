@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    @tags = Tag.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,10 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Category.find(params[:id])
+   @categories = Category.all
+   @category = Category.find(params[:id])
+   
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +29,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new.json
   def new
     @category = Category.new
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +39,17 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @categories = Category.all
     @category = Category.find(params[:id])
+    
   end
 
   # POST /categories
   # POST /categories.json
   def create
+    @categories = Category.all
     @category = Category.new(params[:category])
+
 
     respond_to do |format|
       if @category.save
@@ -56,12 +65,13 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.json
   def update
+    @categories = Category.all
     @category = Category.find(params[:id])
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { head :ok }
+        format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -72,12 +82,13 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    @categories = Category.all
     @category = Category.find(params[:id])
     @category.destroy
 
     respond_to do |format|
       format.html { redirect_to categories_url }
-      format.json { head :ok }
+      format.json { head :no_content }
     end
   end
 end

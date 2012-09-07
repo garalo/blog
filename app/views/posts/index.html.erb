@@ -1,0 +1,32 @@
+<% @posts.each do |post| %>
+  <h3 class="title"><%= post.title %></h3> 
+  <div class="post-meta">
+   <span class="sep">Posted on </span> 
+   <time class="entry-date"> <%= post.updated_at %> </time> 
+   <span class="byline"> 
+     <span class="sep">by</span> 
+     <span class="author">
+	  <% if post.user%>
+        <%= post.user.email %>
+      <% else %>
+        no user
+      <%end%>
+     </span>
+   </span>
+  </div><!--post-meta end-->
+   <p> <%= image_tag post.image_url(:thumb).to_s, :class=>"sidebar_avatar" %>
+   	<!--%= post.content.to_s.slice!(0..150)%--><%= truncate(post.content, :length => 150)%> 
+   	<%= link_to 'Read More...', post, :class=>"readmore" %>
+   </p>
+  <% if post.tags.present? %>
+    <div class="tags">
+      <!--%= "Tags: #{join_tags(post)}"  %-->
+ 	<% post.tags.each do |tag| %>
+      <%= link_to tag.name, posts_path(:tag => tag.name) %>
+    <% end %> 
+    </div>
+  <% end %> 
+    <hr/>
+<% end %>
+
+ 

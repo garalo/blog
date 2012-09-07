@@ -1,3 +1,4 @@
 class Category < ActiveRecord::Base
-  belongs_to :blog_entry
+  belongs_to :post
+  attr_accessible :name
 end
