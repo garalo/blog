@@ -14,12 +14,16 @@ gem 'rails_admin', :git => 'git://github.com/brewster1134/rails_admin.git'
 
 gem 'devise'
 gem 'carrierwave'
-gem "rmagick"
-#gem "mini_magick"
+#gem "rmagick"
+gem "mini_magick"
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'rails_admin_tag_list'
 gem 'bootstrap-wysihtml5-rails'
 gem 'kaminari'
+# gem 'will_paginate'
+
+gem 'disqus'
+
 
 
 # Gems used only for assets and not required

@@ -1,12 +1,26 @@
 layouts
+<%= form_tag posts_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <% if @tags.nil? %>
    default_tag
   <% else%>
 <div class="nav nav-list">
 <h4 class="nav-header">Tags</h4>
-  <% @tags.each do |tag| %>
-    <%= link_to tag.name, :tag => tag.name %>-(<%= tag.count %>) 
-  <% end %>
+  <% @tags.sort_by(&:count).reverse.each do |k| %>
+      <% url_opts = {:action => "index", :controller => "posts"}
+         link_name = "#{k.name} (#{k.count})"
+      %>
+      <% if @keyword == k.name %>
+        <%= link_to link_name, url_opts.merge(:keyword => nil), :class => "tag current_tag", :title => "Click again to see all" %>
+      <% else %>
+        <%= link_to link_name,  url_opts.merge(:keyword => k.name), :class => "tag", :title => "Click to filter by #{k.name}" %>
+      <% end %>
+    <% end %>
 </div>
 <% end %>
 

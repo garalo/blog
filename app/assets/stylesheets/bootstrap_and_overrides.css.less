@@ -52,7 +52,29 @@ body { padding-top: 60px; }
   position:relative;
 }
  
-.tags {
-  background-color:#fafafa;
-  border:1px solid #f9f9f9;
-}
+ /**** and associated tag-cloud styles ****/
+  /* basic tag-box */
+  .tag {
+    background-color: #eee;
+    border: 2px solid #ccc;
+    color: orange;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    padding: 2px 15px;
+    text-decoration: none;
+  }
+  .current_tag {
+    background-color: #ddd;
+    color: orange;
+    border: 2px solid orange;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    font-weight: bold;
+  }
+  .tag:hover, .current_tag:hover {
+    background-color: #bbb;
+    color: red;
+    border: 2px solid red;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+  }

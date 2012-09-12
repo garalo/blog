@@ -1,36 +1,27 @@
-
- <h3 class="title"><%= @post.title %></h3>
-
- <div class="post-meta">
-   <span class="sep">Posted on </span> 
-   <time class="entry-date"> <%= @post.updated_at %> </time> 
-   <span class="byline"> 
-     <span class="sep">by</span> 
-     <span class="author">
-	  <% if @post.user%>
-        <%= @post.user.email %>
-      <% else %>
-        no user
-      <%end%>
-     </span>
-   </span>
-  </div><!--post-meta end-->
+<h3 class="title"><%= @post.title %></h3>
+<div class="post-meta">
+	<span class="sep">Posted on </span>
+	<time class="entry-date">
+		<%= @post.updated_at %>
+	</time>
+	<span class="byline"> <span class="sep">by</span> <span class="author"> <% if @post.user%>
+			<%= @post.user.email %>
+			<% else %>
+			no user
+			<%end%> </span> </span>
+</div><!--post-meta end-->
 <p>
-  <%= image_tag @post.image_url.to_s, :class=>"row-fluid" %>
-  <%= @post.content %>
+	<%= image_tag @post.image_url.to_s, :class=>"row-fluid" %>
+	<%= @post.content %>
 </p>
- <hr/>
- <h4>Category</h4>
-     <% if @category %>
-     <%= @category.name   %>
-     <% else %>
-     <p> No Category</p>
-      <% end %>
-      <hr/>
-      
- <h4>Comments</h4>
-     <%= render @post.comments %>
-     <hr/>
-      <h2>Add a comment:</h2>
-      <%= render "comments/form" %>
-
+<hr/>
+Category :
+	<% if @category %>
+		<%= link_to @category.name, posts_path(:category => @category) %>
+	<% else %>
+	    No Category
+	<% end %>
+<hr/>
+<div id ="disqus_thread">
+	<%= raw disqus_thread %>
+</div>

@@ -13,7 +13,7 @@
 class Post < ActiveRecord::Base
   #attr_accessible :name, :title
   #attr_accessible :tag_list
-  has_many :comments, :dependent => :destroy
+  # has_many :comments, :dependent => :destroy
   #has_many :tags
   has_many :categories
   belongs_to :user
@@ -25,4 +25,13 @@ class Post < ActiveRecord::Base
   
   accepts_nested_attributes_for :tags, :allow_destroy => :true,
       :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+      
+ def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+ end
+
 end

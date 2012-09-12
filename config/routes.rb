@@ -7,8 +7,11 @@ Blog::Application.routes.draw do
  # ActiveAdmin.routes(self)
   
   resources :posts do
-    resources :comments
+    # resources :comments
     resources :categories
+    collection do
+      get :tag
+    end
   end
 
   #get "home/index"
