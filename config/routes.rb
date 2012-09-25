@@ -9,12 +9,20 @@ Blog::Application.routes.draw do
   resources :posts do
     # resources :comments
     resources :categories
+    # get :tag_search, :on => :member
+    # resources :tags
     collection do
-      get :tag
+      get :tag_search
     end
+    
+    # match 'posts/search',   :to => 'posts#search'
+    # match 'posts/tag_search',   :to => 'posts#tag_search'
   end
 
-  #get "home/index"
+  match 'posts/search',   :to => 'posts#search'
+  # match 'posts/tag_search',   :to => 'posts#tag_search'
+  # match 'tags/tag_search',   :to => 'tags#tag_search'
+  # #get "home/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

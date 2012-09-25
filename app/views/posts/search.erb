@@ -1,3 +1,9 @@
+<% if @posts.empty? %>
+
+<p>Try another one.</p>
+
+<%end%>
+
 <% @posts.each do |post| %>
   <h3 class="title"><%= post.title %></h3> 
   <div class="post-meta">
@@ -20,17 +26,15 @@
    </p>
   <% if post.tags.present? %>
     <div class="tags">
+      <!--%= "Tags: #{join_tags(post)}"  %-->
  	<% post.tags.each do |tag| %>
       <% tag.name.split.each do |word| %> 
-      <%= link_to word, :controller => "posts", :action =>"tag_search", :tag_search => word %>     
-      <% end %>
+          <%= link_to word, :controller => "posts", :action =>"tag_search", :tag_search => word %>     
+       <% end %>
     <% end %> 
     </div>
   <% end %> 
     <hr/>
 <% end %>
+
 <%= paginate @posts %>
-
-
-
- 

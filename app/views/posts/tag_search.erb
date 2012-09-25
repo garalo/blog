@@ -22,7 +22,7 @@
     <div class="tags">
  	<% post.tags.each do |tag| %>
       <% tag.name.split.each do |word| %> 
-      <%= link_to word, :controller => "posts", :action =>"tag_search", :tag_search => word %>     
+          <%= link_to word, :controller => "posts", :action =>"tag_search", :tag_search => word %>   
       <% end %>
     <% end %> 
     </div>
@@ -30,7 +30,3 @@
     <hr/>
 <% end %>
 <%= paginate @posts %>
-
-
-
- 

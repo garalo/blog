@@ -26,12 +26,17 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :tags, :allow_destroy => :true,
       :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
       
+ # def self.search(search)
+    # if search
+      # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    # else
+      # find(:all)
+    # end
+ # end
+ 
  def self.search(search)
-    if search
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-    else
-      find(:all)
-    end
+  search_condition = "%" + search + "%"
+  find(:all, :conditions => ['title LIKE ? OR name LIKE ?', search_condition, search_condition])
  end
 
 end

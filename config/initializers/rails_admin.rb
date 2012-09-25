@@ -95,7 +95,7 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
-  # config.model Post do
+  config.model Post do
 #     
     # # edit do
       # # field :content, :text do
@@ -115,7 +115,12 @@ RailsAdmin.config do |config|
         # list do; end
         # export do; end
         # show do; end
-        # edit do;
+        edit do
+          
+          include_all_fields
+           field :content, :text do
+             ckeditor true
+           end
           # field :name
           # field :title
           # field :created_at
@@ -124,10 +129,10 @@ RailsAdmin.config do |config|
           # field :content, :text do
              # bootstrap_wysihtml5 true
           # end
-         # end
+         end
         # create do; end
         # update do; end
-       # end
+       end
   # config.model Tag do
   #   # Found associations:
   #     configure :post, :belongs_to_association   #   # Found columns:

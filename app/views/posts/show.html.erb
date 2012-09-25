@@ -12,12 +12,12 @@
 </div><!--post-meta end-->
 <p>
 	<%= image_tag @post.image_url.to_s, :class=>"row-fluid" %>
-	<%= @post.content %>
+	<%= raw @post.content %>
 </p>
 <hr/>
 Category :
 	<% if @category %>
-		<%= link_to @category.name, posts_path(:category => @category) %>
+		<%= link_to @category.name, posts_path(:category=> @category) %>
 	<% else %>
 	    No Category
 	<% end %>

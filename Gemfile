@@ -24,6 +24,8 @@ gem 'kaminari'
 
 gem 'disqus'
 
+gem 'ckeditor' # for WYSIWYG editing
+
 
 
 # Gems used only for assets and not required
